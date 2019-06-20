@@ -37,7 +37,7 @@ function jma_soliloquy_files()
     }
     wp_enqueue_style('jma_soliloquy_css', JMASOL_URL .  'jma_soliloquy_css.min.css');
     global $jma_spec_options;
-    $adjusted_icon_color = function_exists('first_is_lighter') && first_is_lighter($jma_spec_options['footer_font_color'], $jma_spec_options['footer_background_color'])? $jma_spec_options['footer_background_color']: $jma_spec_options['footer_font_color'];
+    $adjusted_icon_color = function_exists('first_is_lighter') && first_is_lighter($jma_spec_options['footer_background_color'], $jma_spec_options['footer_font_color'])? $jma_spec_options['footer_font_color']: $jma_spec_options['footer_background_color'];
 
     $data = '
         body .soliloquy-container .jma-dynamic-slide .soliloquy-caption {
