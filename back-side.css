@@ -22,4 +22,8 @@
     font-size: 0;
 }
 
-.check-grid li label {}
+@media(max-width:1150px) {
+    .check-grid .acf-button-group label {
+        width: 24%;
+    }
+}

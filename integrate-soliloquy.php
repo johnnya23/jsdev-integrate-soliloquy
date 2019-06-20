@@ -255,8 +255,12 @@ function jma_dynamic_soliloquy_pre_data($data)
     if ($data['id'] == 'custom_project_images') {
         //force full width
         $data['config']['slider_size'] = 'full_width';
+        
+        //overcome bug in soliloquy
         $data['config']['lightbox'] = 0;
         $data['config']['enable_link'] = 0;
+
+        //default to these values
         $data['config']['auto'] = 0;
         $data['config']['hover'] = 0;
         if (is_array(get_field('settings'))) {
