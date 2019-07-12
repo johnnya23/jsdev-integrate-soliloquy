@@ -31,9 +31,17 @@ jQuery(document).ready(function($) {
         }
     }
 
+    function show_coptions() {
+        $('.soliloquy-item').removeClass('jma-dynamic-slide-hidden');
+    }
+
     function handleCanvas() {
         //do stuff here
         fix_soliloquy_elements();
+        $.when(fix_soliloquy_elements()).done(function() {
+            show_coptions();
+        });
+
     }
 
     // set up the mutation observer

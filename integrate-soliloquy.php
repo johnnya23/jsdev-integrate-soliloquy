@@ -22,12 +22,17 @@ if (! defined('JMASOL_URL')) {
 the page (don't change default slug) */
 function jma_dynamic_selected()
 {
-    $data = get_post_meta(get_the_ID(), '_jma_header_data_key', false);
-    $slider_id = $data[0]['slider_id'];
-    $slider_id_exploded = explode('|', $slider_id);
-    $slider_slug = get_post($slider_id_exploded[1]);
-    $post_name = $slider_slug->post_name;
-    return $slider_id_exploded[0] == 'soliloquy-slider' && strpos($post_name, 'dynamic') !== false;
+    $return = false;
+    if ($data = get_post_meta(get_the_ID(), '_jma_header_data_key', false)) {
+        if (isset($data[0]['slider_id']) && $data[0]['slider_id']) {
+            $slider_id = $data[0]['slider_id'];
+            $slider_id_exploded = explode('|', $slider_id);
+            $slider_slug = get_post($slider_id_exploded[1]);
+            $post_name = $slider_slug->post_name;
+            $return =  $slider_id_exploded[0] == 'soliloquy-slider' && strpos($post_name, 'dynamic') !== false;
+        }
+    }
+    return $return;
 }
 
 function jma_soliloquy_files()
@@ -216,6 +221,7 @@ function jma_soliloquy_output_item_classes($classes, $item, $i, $data)
         // only slides that are displayed starting with 1,2,3...
         $this_row = $rows[($i-1)];
         $classes[] = 'jma-dynamic-slide';
+        $classes[] = 'jma-dynamic-slide-hidden';
 
         if (isset($this_row['class'])) {
             $items = explode(' ', $this_row['class']);
@@ -255,7 +261,7 @@ function jma_dynamic_soliloquy_pre_data($data)
     if ($data['id'] == 'custom_project_images') {
         //force full width
         $data['config']['slider_size'] = 'full_width';
-        
+
         //overcome bug in soliloquy
         $data['config']['lightbox'] = 0;
         $data['config']['enable_link'] = 0;

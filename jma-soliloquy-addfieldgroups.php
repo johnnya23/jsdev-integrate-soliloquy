@@ -16,7 +16,7 @@ function soliloquy_post_group_options()
         'title' => 'Defaults',
         'fields' => array(
             array(
-                'key' => 'soliloquyfield_5c72a7ec47a2c',
+                'key' => 'soliloquyfield_5c72a7ec47a2cxxx',
                 'label' => 'Location',
                 'name' => 'jma_soliloquy_location',
                 'type' => 'post_object',
@@ -67,7 +67,7 @@ function soliloquy_post_group_options()
                 'placeholder' => 'outline-title special-title',
                 'maxlength' => '',
                 'rows' => 3,
-                'new_lines' => '',
+                'new_lines' => '',//'br'
             ),
         ),
         'location' => array(
