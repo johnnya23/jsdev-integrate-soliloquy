@@ -38,7 +38,7 @@ function jma_dynamic_selected()
 function jma_soliloquy_files()
 {
     if (jma_dynamic_selected()) {
-        wp_enqueue_script('jma_soliloquy_js', JMASOL_URL .  'jma-soliloquy.min.js');
+        wp_enqueue_script('jma_soliloquy_js', JMASOL_URL .  'jma-soliloquy.min.js', array('jma_big_slider_js'));
     }
     wp_enqueue_style('jma_soliloquy_css', JMASOL_URL .  'jma_soliloquy_css.min.css');
     global $jma_spec_options;

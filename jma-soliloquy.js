@@ -31,13 +31,17 @@ jQuery(document).ready(function($) {
         }
     }
 
+    /* keeps the captions from showing before the slider is repositioned */
     function show_coptions() {
         $('.soliloquy-item').removeClass('jma-dynamic-slide-hidden');
     }
 
-    function handleCanvas() {
-        //do stuff here
+    /* on load we dont run fix elements until the slider nav is loaded  */
+    function solIsLoaded() {
+
         fix_soliloquy_elements();
+
+        //this is what delays caption display
         $.when(fix_soliloquy_elements()).done(function() {
             show_coptions();
         });
@@ -50,7 +54,7 @@ jQuery(document).ready(function($) {
         // `me` is the MutationObserver instance
         var canvas = $('.soliloquy-controls-direction').length;
         if (canvas) {
-            handleCanvas();
+            solIsLoaded();
             bigheaderme.disconnect(); // stop observing
             return;
         }
