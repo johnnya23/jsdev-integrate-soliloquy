@@ -3,8 +3,11 @@ jQuery(document).ready(function($) {
     function fix_soliloquy_elements() {
         window_width = $window.width();
         $jma_header_image_wrap = $('.jma-header-image-wrap');
-        available_height = $('body').data('available_height');
-        if (($(".copyright").css("margin-bottom") == "5px") && $.isNumeric(available_height)) {
+        available_height = $.isNumeric($('body').data('available_height')) ? $('body').data('available_height') : $jma_header_image_wrap.height();
+
+        //width_val = $('body').hasClass('jma-stack-991') ? 12 : 7;
+        if ($('#dont-edit-this-element').css('z-index') > 12) {
+
             $jma_header_image_wrap.find('.soliloquy-caption').css({
                 'width': window_width + 'px',
                 'height': available_height
@@ -15,11 +18,13 @@ jQuery(document).ready(function($) {
             $jma_header_image_wrap.find('.soliloquy-pager').css({
                 'bottom': (($jma_header_image_wrap.height() - available_height) / 2 + 10) + 'px'
             });
+
         } else {
             $jma_header_image_wrap.find('.soliloquy-caption').css({
                 'width': '',
                 'height': ''
             });
+
             $jma_header_image_wrap.find('.soliloquy-controls-direction').css('width', '');
             $('.soliloquy-caption').css({
                 'width': '',

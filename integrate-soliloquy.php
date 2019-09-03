@@ -3,8 +3,8 @@ if (!defined('ABSPATH')) {
     die('No direct access.');
 }
 /*
-Plugin Name: JMA Integrate Soliloquy Slider into Header for 7.2
-Description: This plugin integrates the soliloquy slider plugin with jma child theme header for 7.2
+Plugin Name: JMA Integrate Soliloquy Slider into Header for 7.3
+Description: This plugin integrates the soliloquy slider plugin with jma child theme header for 7.3
 Version: 1.0
 Author: John Antonacci
 Author URI: http://cleansupersites.com
@@ -38,7 +38,11 @@ function jma_dynamic_selected()
 function jma_soliloquy_files()
 {
     if (jma_dynamic_selected()) {
-        wp_enqueue_script('jma_soliloquy_js', JMASOL_URL .  'jma-soliloquy.min.js', array('jma_big_slider_js'));
+        $dep = array();
+        if (function_exists('use_big_slider') && use_big_slider()) {
+            $dep = array('jma_big_slider_js');
+        }
+        wp_enqueue_script('jma_soliloquy_js', JMASOL_URL .  'jma-soliloquy.min.js', $dep);
     }
     wp_enqueue_style('jma_soliloquy_css', JMASOL_URL .  'jma_soliloquy_css.min.css');
     global $jma_spec_options;

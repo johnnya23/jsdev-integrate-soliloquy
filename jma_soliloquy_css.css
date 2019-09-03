@@ -17,7 +17,7 @@ body .soliloquy-container .soliloquy-pager-link.active, body .soliloquy-containe
 }
 
 /* arrow nav */
-body.big_slider_wide .soliloquy-controls-direction {
+body.big_slider_wide .soliloquy-controls-direction, body.full_image_wide .soliloquy-controls-direction {
     position: absolute;
     top: 50%;
     left: 50%;
