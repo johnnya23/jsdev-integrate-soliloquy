@@ -1,4 +1,5 @@
 jQuery(document).ready(function($) {
+    $window = $(window);
 
     function fix_soliloquy_elements() {
         window_width = $window.width();
